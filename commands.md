@@ -19,3 +19,7 @@ mvn package -DskipTests -Pnative
 ### test native executable
 
 mvn verify -Pnative
+
+# set GRAALVM_HOME
+
+export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-jdk-22.0.1+8.1/Contents/Home
