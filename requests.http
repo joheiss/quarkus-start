@@ -1,0 +1,13 @@
+@url = http://localhost:8080/api/books
+
+GET {{url}}
+
+###
+
+GET {{url}}/count
+
+###
+
+GET {{url}}/2
+
+###
