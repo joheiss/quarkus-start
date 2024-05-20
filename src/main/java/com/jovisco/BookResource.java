@@ -1,9 +1,7 @@
 package com.jovisco;
 
 import java.util.List;
-import java.util.Optional;
 
-import com.jovisco.domain.Book;
 import com.jovisco.dtos.BookDto;
 import com.jovisco.mappers.BookMapper;
 import com.jovisco.repositories.BookRepository;
