@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.jovisco.domain.Book;
+import com.jovisco.dtos.BookDto;
+import com.jovisco.mappers.BookMapper;
 import com.jovisco.repositories.BookRepository;
 
 import jakarta.inject.Inject;
@@ -22,10 +24,16 @@ public class BookResource {
     @Inject
     BookRepository bookRepository;
 
+    @Inject 
+    BookMapper bookMapper;
+    
     @GET
-    public List<Book> getAll() {
+    public List<BookDto> getAll() {
         log.info("*** get all books SLF4J");
-        return bookRepository.getBooks();
+        return bookRepository.getBooks()
+            .stream()
+            .map(bookMapper::toDto)
+            .toList();
     }
 
     @GET
@@ -37,8 +45,7 @@ public class BookResource {
 
     @GET
     @Path("{id}")
-    public Optional<Book> getById(@PathParam("id") int id) {
-        return bookRepository.getBook(id);
+    public BookDto getById(@PathParam("id") int id) {
+        return bookMapper.toDto(bookRepository.getBook(id).orElse(null));
     }
-
 }
